@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proforma Items</title>
+    <!-- Tambahkan Google Fonts (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/proforma.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Proforma Invoice</h1>
+        
+        <button class="button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            viewBox="0 0 20 20"
+            height="20"
+            fill="none"
+            class="svg-icon"
+          >
+            <g stroke-width="1.5" stroke-linecap="round" stroke="#ff342b">
+              <path
+                d="m3.33337 10.8333c0 3.6819 2.98477 6.6667 6.66663 6.6667 3.682 0 6.6667-2.9848 6.6667-6.6667 0-3.68188-2.9847-6.66664-6.6667-6.66664-1.29938 0-2.51191.37174-3.5371 1.01468"
+              ></path>
+              <path
+                d="m7.69867 1.58163-1.44987 3.28435c-.18587.42104.00478.91303.42582 1.0989l3.28438 1.44986"
+              ></path>
+            </g>
+          </svg>
+          <a href="/" class="label"><span>Back</span></a>
+        </button>
+
+        <table id="productsTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nama Produk</th>
+                    <th>Tipe</th>
+                    <th>Harga</th>
+                    <th>Lebar</th>
+                    <th>Panjang</th>
+                    <th>Gambar</th>
+                    <th>Notes</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for products in data %}
+                <tr>
+                    <td>{{ products['id']}}</td>
+                    <td>{{ products['nama_produk'] }}</td>
+                    <td>{{ products['tipe_id'] }}</td>
+                    <td class="harga">{{ products['harga'] }}</td>  
+                    <td>{{ products['lebar'] }}</td>
+                    <td>{{ products['panjang'] }}</td>
+                    <td>
+                        {% if products['gambar'] %}
+                            <img src="{{ url_for('static', filename='uploads/' + products['gambar']) }}" alt="Gambar Produk">
+                        {% else %}
+                            Tidak Ada Gambar
+                        {% endif %}
+                    </td>
+                    <td>{{ products['notes'] }}</td>
+                    <td> <a href="/delete/{{ products.id}}" class="btn btn-sm btn-danger">Delete</a> 
+                    
+                    </td>
+                        
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Tampilkan total harga -->
+        <div class="total-harga">
+            <h3>Total Harga: Rp <span id="totalHarga">0</span></h3>  <!-- Tempat untuk menampilkan total harga -->
+        </div>
+
+        <button>
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+              </svg>
+            </div>
+          </div>
+          <a href="/invoice" class="label"><span>Invoice</span></a>
+        </button>
+
+        <p><a href="/add">Create New Project</a></p>
+    </div>
+
+    <script>
+        
+        function hitungTotalHarga() {
+            let totalHarga = 0;
+            
+            const hargaElements = document.querySelectorAll('#productsTable .harga');
+            
+            hargaElements.forEach(function(hargaElement) {
+                let harga = parseFloat(hargaElement.textContent.replace(/[^0-9.-]+/g, "")); 
+                if (!isNaN(harga)) {
+                    totalHarga += harga;  
+                }
+            });
+            
+            
+            document.getElementById('totalHarga').textContent = totalHarga.toFixed(2); 
+        }
+
+        
+        window.onload = hitungTotalHarga;
+    </script>
+</body>
+</html>

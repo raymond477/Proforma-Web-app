@@ -1,0 +1,202 @@
+/* Reset dan Pengaturan Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 16px; /* Ukuran font dasar untuk kemudahan akses */
+}
+
+body {
+    background: linear-gradient(135deg, #f7f9fc, #e3f2fd); /* Gradasi halus untuk latar belakang */
+    color: #333;
+    line-height: 1.6;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #1e2a38; /* Warna gelap profesional */
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 5px solid #4caf50; /* Garis bawah hijau lembut untuk aksen */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.2s ease-out;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan halus untuk efek elegan */
+}
+
+/* Main Content */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Pembatasan lebar untuk konten utama */
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.intro p {
+    font-size: 1.4rem;
+    color: #555;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+/* Tombol */
+.btn {
+    background-color: #4caf50; /* Warna hijau lembut yang memberikan kesan segar */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3); /* Efek bayangan halus */
+    outline: none;
+}
+
+.btn:hover {
+    background-color: #388e3c;
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Tabel untuk Proforma Invoice */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #1e2a38;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+th, td {
+    padding: 18px 20px;
+    text-align: center;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+tbody tr {
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1; /* Warna abu-abu terang untuk efek hover */
+}
+
+table img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        padding: 0 10px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+    }
+
+    .intro p {
+        font-size: 1.2rem;
+    }
+
+    table th, table td {
+        padding: 12px 15px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    body {
+        padding: 0 5px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    .intro p {
+        font-size: 1rem;
+    }
+
+    table th, table td {
+        padding: 10px;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #1e2a38;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 354px;
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Transisi untuk hover pada tombol, link, dan elemen interaktif */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #4caf50;
+}
+

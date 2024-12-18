@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/add.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Create New Project</h1>
+    </header>
+    <main>
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('add_item') }}">
+            <label for="nama_produk">Nama Produk:</label>
+            <input type="text" id="nama_produk" name="nama_produk" required>
+        
+            <label for="tipe_id">Pilih Tipe Produk:</label>
+            <select id="tipe_id" name="tipe_id" required onchange="this.form.submit()">
+                <option value="" disabled selected>-- Pilih Tipe --</option>
+                {% for tipe in tipe_produk %}
+                    <option value="{{ tipe.id }}" {% if tipe.id == selected_tipe_id|int %}selected{% endif %}>
+                        {{ tipe.nama_tipe }}
+                    </option>
+                {% endfor %}
+            </select>
+        
+            <label for="lebar">Lebar:</label>
+            <input type="number" id="lebar" name="lebar" required>
+        
+            <label for="panjang">Panjang:</label>
+            <input type="number" id="panjang" name="panjang" required>
+        
+            <label for="gambar">Image:</label>
+            <input type="file" id="gambar" name="gambar" accept="image/*" required>
+
+            <label for="notes">Notes:</label>
+            <textarea id="notes" name="notes" placeholder="Enter notes here"></textarea>
+
+            <div class="actions">
+                <button type="submit" name="submit" class="btn btn-create">Create Product</button>
+                <a href="/proforma" class="btn btn-back">Cancel</a>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Arkatex App. Created By Peter Raymond Hon.</p>
+    </footer>
+</body>
+</html>

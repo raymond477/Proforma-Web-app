@@ -1,0 +1,85 @@
+/* Mengatur tampilan invoice */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    padding: 20px;
+}
+
+.invoice-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #4A90E2;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.invoice-details {
+    margin-top: 20px;
+}
+
+#invoiceTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+#invoiceTable th, #invoiceTable td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#invoiceTable th {
+    background-color: #4A90E2;
+    color: white;
+}
+
+#invoiceTable td img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+}
+
+/* Styling untuk total harga */
+.total-harga {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.total-harga h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4A90E2;
+}
+
+/* Styling untuk image di atas SVG */
+.image {
+    position: relative;
+    display: inline-block;
+}
+
+.image svg {
+    width: 150px;
+    height: 150px;
+}
+
+/* Gambar sablon (image) yang akan ditempelkan ke atas baju */
+.sablon-img {
+    position: absolute;
+    top: 60px; /* Sesuaikan posisi vertikal */
+    left: 40px; /* Sesuaikan posisi horizontal */
+    width: 70px; /* Sesuaikan ukuran gambar sablon */
+    height: 70px;
+    object-fit: contain;
+    border-radius: 10px;
+}
